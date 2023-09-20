@@ -24,7 +24,7 @@ class Bird implements Swimming, Flying {
     }
 }
 
-public class test {
+public class Assignment_1 {
     public static void main(String[] args) {
         Bird bird = new Bird();
         bird.swim(); // Calls the swim method from the Swimming interface

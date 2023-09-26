@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-Color_img = cv2.imread('butterfly.jpg',1)
+Color_img = cv2.imread('im1.jpg',1)
 Color_img = cv2.resize(Color_img,(512,512))
 Gray_img = cv2.cvtColor(Color_img,cv2.COLOR_BGR2GRAY)
 
@@ -18,8 +18,6 @@ plt.title('Histogram 1')
 
 threshold_value=128
 
-# Apply binary thresholding
-# _, thresholded_image = cv2.threshold( Gray_img, threshold_value, 255, cv2.THRESH_BINARY)
 Gray_img = Gray_img>128
 thresholded_image=Gray_img.copy()
 

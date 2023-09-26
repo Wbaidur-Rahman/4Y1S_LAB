@@ -2,21 +2,22 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-Color_img = cv2.imread('butterfly.jpg')
+Color_img = cv2.imread('im2.jpg')
 Gray_img = cv2.cvtColor(Color_img, cv2.COLOR_BGR2GRAY)
-Image = cv2.resize(Gray_img,(512,512))
-Re_color = cv2.cvtColor(Gray_img,cv2.COLOR_GRAY2RGB)
-New_img = cv2.resize(Re_color,(512,512))
-
-print(Image[100])
-print('Difference\n')
-print(New_img[100:101])
+image = cv2.resize(Gray_img,(512,512))
 
 plt.subplot(2,1,1)
-plt.imshow(Image,cmap='gray')
+plt.imshow(image,cmap='gray')
+
+h,w = image.shape
+
+for i in range (h):
+    for j in range (w):
+        if image[i,j]>=100 and image[i,j]<=200:
+            image[i,j]=0
 
 plt.subplot(2,1,2)
-plt.imshow(New_img)
+plt.imshow(image, cmap='gray')
 
 plt.show()
 

@@ -1,6 +1,3 @@
-// In Java, multiple inheritance is not supported through class inheritance, 
-// where a class can only extend one superclass
-
 // Interface for the first behavior
 interface Swimming {
     void swim();

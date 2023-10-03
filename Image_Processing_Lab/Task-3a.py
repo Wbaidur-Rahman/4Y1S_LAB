@@ -19,6 +19,22 @@ def average(img):
  
             output[i][j] = a//d; 
     return output
+
+def median(img):
+    output = np.copy(img)
+    h,w = img.shape
+ 
+    for i in range (h):
+        for j in range (w):
+            temp = []
+            a=0;d=0
+            for k in range (i-2,i+3):
+                for l in range (j-2,j+3):
+                    if k<0 or k>=h or l<0 or l>=w: continue
+                    temp.append(img[k][l])
+ 
+            output[i][j] = np.median(temp); 
+    return output
  
 def main():
     img = cv2.imread(image_path)
@@ -28,14 +44,18 @@ def main():
  
     noise = np.random.normal(0, 20, img.shape)
     noisy_img = img + noise
-    img = average(noisy_img)
+    img1 = average(noisy_img)
+    img2 = median(noisy_img)
  
-    plt.subplot(2,1,1)
+    plt.subplot(1,3,1)
     plt.imshow(noisy_img,cmap='gray')
     plt.title('Noisy Image')
-    plt.subplot(2,1,2)
-    plt.imshow(img,cmap='gray')
-    plt.title('Filtered Image')
+    plt.subplot(1,3,2)
+    plt.imshow(img1,cmap='gray')
+    plt.title('Average-Filtered Image')
+    plt.subplot(1,3,3)
+    plt.imshow(img2,cmap='gray')
+    plt.title('MeadianFiltered Image')
  
     plt.show()    
  

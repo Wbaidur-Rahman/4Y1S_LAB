@@ -3,6 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
  
 image_path = 'shaun.jpg'
+
+def psnr(original, noisy):
+    mse = np.mean((original - noisy) ** 2)
+    if mse == 0:
+        return 100
+    max_pixel = 255.0
+    psnr_value = 20 * np.log10(max_pixel / np.sqrt(mse))
+    return psnr_value
  
 def average(img, order):
     output = np.copy(img)
@@ -36,21 +44,30 @@ def main():
     
     plt.subplot(2,2,2)
     plt.imshow(img1,cmap='gray')
-    plt.title('Filtered Image1')
+    plt.title(f'Mask size : {mask_order}')
+
+    psnr1 = psnr(img, img1)
+    print(f"Average filter psnr (mask size = {mask_order}) : ",psnr1)
 
     mask_order = 5
     img1 = average(noisy_img, mask_order)
     
     plt.subplot(2,2,3)
     plt.imshow(img1,cmap='gray')
-    plt.title('Filtered Image2')
+    plt.title(f'Mask size : {mask_order}')
+
+    psnr1 = psnr(img, img1)
+    print(f"Average filter psnr (mask size = {mask_order}) : ",psnr1)
  
     mask_order = 7
     img1 = average(noisy_img, mask_order)
     
     plt.subplot(2,2,4)
     plt.imshow(img1,cmap='gray')
-    plt.title('Filtered Image3')
+    plt.title(f'Mask size : {mask_order}')
+
+    psnr1 = psnr(img, img1)
+    print(f"Average filter psnr (mask size = {mask_order}) : ",psnr1)
     plt.show()    
  
 if __name__ == '__main__':

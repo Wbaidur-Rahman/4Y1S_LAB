@@ -25,6 +25,10 @@ public class Assignment_1 {
     public static void main(String[] args) {
         Bird bird = new Bird();
         bird.swim(); 
+<<<<<<< HEAD
         bird.fly();  
+=======
+        bird.fly(); 
+>>>>>>> f3b321e324d5fcb614cc0182337afbedddaa89a3
     }
 }

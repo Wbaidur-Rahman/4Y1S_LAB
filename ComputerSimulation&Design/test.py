@@ -36,7 +36,6 @@ time = 0
 #wait for user input or an event
 running = True
 while True:
-    pygame.time.delay(500)
 
     if time == 0:
         screen.blit(text1,(200,200))
@@ -71,6 +70,7 @@ while True:
         previousFighterPosition = currentFighterPosition
 
     # screen.blit(text2, (300,300))
+    pygame.time.delay(500)
     time+=1
     pygame.display.flip()
 

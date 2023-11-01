@@ -4,34 +4,34 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-Color_img = cv2.imread('im1.jpg',1)
-Color_img = cv2.resize(Color_img,(512,512))
-Gray_img = cv2.cvtColor(Color_img,cv2.COLOR_BGR2GRAY)
+Gray_img = cv2.imread('pic-1.jpg',0)
+img = cv2.resize(Gray_img, (512,512))
 
-h,w = Gray_img.shape
+h,w = img.shape
+
+def histogram(img, levels):
+    x = np.zeros(levels, dtype=int)
+    h,w = img.shape
+    for i in range(h):
+        for j in range(w):
+            x[img[i,j]]+=1
+    return x
+
 
 plt.subplot(3,1,1)
-plt.hist(Gray_img,16)
-# plt.xlabel('Values')
+plt.bar(range(256), histogram(img, 256))
 plt.ylabel('Normalized Frequency')
 plt.title('Histogram 1')
 
-threshold_value=128
-
-Gray_img = Gray_img>128
-thresholded_image=Gray_img.copy()
+img = (img>128)*255
 
 plt.subplot(3,1,2)
-plt.hist(thresholded_image.ravel(), bins=2, range=(0, 1))
-# plt.xlabel('Values')
-plt.ylabel('Normalized Frequency')
+plt.bar(range(256), histogram(img,256))
 plt.title('Histogram 2')
 
-print(thresholded_image)
-
-
 plt.subplot(3,1,3)
-plt.imshow(thresholded_image,cmap='gray')
+plt.imshow(img, cmap='gray')
+plt.title('Threshold Image')
 
 plt.show()
 

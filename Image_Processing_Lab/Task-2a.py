@@ -2,7 +2,7 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-Color_img = cv2.imread('im2.jpg')
+Color_img = cv2.imread('shaun.jpg')
 Gray_img = cv2.cvtColor(Color_img, cv2.COLOR_BGR2GRAY)
 image = cv2.resize(Gray_img,(512,512))
 

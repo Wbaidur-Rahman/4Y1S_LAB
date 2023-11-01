@@ -1,110 +1,3 @@
-# import pygame
-# import math
-
-# # Constants
-# MX = 100000
-# # vf = 20.0
-# # time = 10  # Adjust as needed
-# # fx, fy = [0.0] * (time + 1), [0.0] * (time + 1)
-# # bx, by = [0.0] * (time + 1), [0.0] * (time + 1)
-# # dist = [0.0] * (time + 1)
-# # sin_theta = [0.0] * (time + 1)
-# # cos_theta = [0.0] * (time + 1)
-
-# with open('input.txt','r') as file:
-#     xb = file.read().split()
-
-# for i in range(xb.size()):
-#     xb[i] = 2
-#     # int(x)/2
-
-# print('Enter velocity')
-# vf = int(input())
-# print('Enter bomber co-ordinates')
-# xb = input().split()
-# yb = input().split()
-# print(xb)
-
-# # Initialize Pygame
-# pygame.init()
-# screen = pygame.display.set_mode((800, 600))
-# pygame.display.set_caption("Pure Pursuit Problem")
-
-# # Read input data here or replace with your data
-# # ...
-
-# # Main loop
-# running = True
-# clock = pygame.time.Clock()
-
-# while running:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             running = False
-
-#     # Calculate new positions and distances
-#     for i in range(time):
-#         dist[i] = math.sqrt((bx[i] - fx[i]) ** 2 + (by[i] - fy[i]) ** 2)
-#         if dist[i] !=0 :
-#             sin_theta[i] = (by[i] - fy[i]) / dist[i]
-#             cos_theta[i] = (bx[i] - fx[i]) / dist[i]
-#         fx[i + 1] = fx[i] + vf * cos_theta[i]
-#         fy[i + 1] = fy[i] + vf * sin_theta[i]
-
-#     # Check for collision or termination condition
-#     if any(dist[i] <= vf for i in range(time)):
-#         print(f"Time: {i}\nDistance: {dist[i]}")
-#         running = False
-
-#     # Drawing code
-#     screen.fill((0, 0, 0))
-#     # Draw your objects here using Pygame drawing functions
-#     # ...
-
-
-#     # Initialize Pygame
-#     pygame.init()
-#     screen = pygame.display.set_mode((800, 600))
-#     pygame.display.set_caption("Drawing Objects in Pygame")
-
-#     # Colors (RGB)
-#     WHITE = (255, 255, 255)
-#     RED = (255, 0, 0)
-#     GREEN = (0, 255, 0)
-#     BLUE = (0, 0, 255)
-
-#     # Main loop
-#     running = True
-#     clock = pygame.time.Clock()
-
-#     while running:
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 running = False
-
-#         # Clear the screen
-#         screen.fill((0, 0, 0))
-
-#         # Draw objects
-#         # Draw a circle (x, y, radius)
-
-#         pygame.draw.circle(screen, RED, (200, 200), 50)
-
-#         # Draw a filled rectangle (x, y, width, height)
-#         pygame.draw.rect(screen, GREEN, (300, 300, 100, 50))
-
-#         # Draw a line (start_position, end_position, line_thickness)
-#         pygame.draw.line(screen, BLUE, (400, 400), (600, 500), 5)
-
-#         # Update the display
-#         pygame.display.flip()
-
-#         # Control frame rate
-#         clock.tick(60)
-
-# pygame.quit()
-
-
 import pygame
 import math
 import numpy as np
@@ -122,7 +15,7 @@ screen = pygame.display.set_mode((width , height))
 f = pygame.font.get_default_font()
 font = pygame.font.SysFont(f , 45)
 
-boomberPos = font.render("B" , True , (255,0,0), (0,0,0))
+boomberPos = font.render("B" , True , (255,0,0), (255,255,255))
 fighterPos = font.render("F" , True , (0,255,0) , (0,0,0))
 caught = font.render("Caught" , True , (0,255,0) , (0,0,0))
 escaped = font.render("Escaped" , True , (255,0,0) , (0,0,0))
@@ -189,6 +82,11 @@ while running:
 
     t += 1
     pygame.display.flip()
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running=False
+       
 
-pygame.time.delay(3000)
+
 pygame.quit()

@@ -2,6 +2,7 @@ public class VendingMachine {
     private State idleState;
     private State outOfStockState;
     private State currentState;
+    private State hasOneDollarState;
     private int count;
 
     //set Method
@@ -23,6 +24,7 @@ public class VendingMachine {
     }
 
     public void insertDollar() {
+        hasOneDollarState = new HasOneDollarState();
         currentState.insertDollar( this );
     }
     public void ejectMoney() {
@@ -35,6 +37,7 @@ public class VendingMachine {
         System.out.println("Retuning money");
     }
     public void doReleaseProduct() {
+        count--;
         System.out.println("Product released");
     }
     //get methods
@@ -42,13 +45,13 @@ public class VendingMachine {
         return count;
     }
     public State getIdleState() {
-        return new IdleState();
+        return idleState;
     }
     public State getOutOfStockState() {
-        return new OutOfStockState();
+        return outOfStockState;
     }
     public State getHasOneDollarState() {
-        return new HasOneDollarState();
+        return hasOneDollarState;
     }
 }
 

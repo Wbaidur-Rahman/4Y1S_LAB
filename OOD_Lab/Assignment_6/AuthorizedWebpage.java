@@ -1,5 +1,5 @@
 public class AuthorizedWebpage extends WebPageDecorator {
-    public AuthorizedWebpage(Webpage decoratedpage) {
+    AuthorizedWebpage(Webpage decoratedpage) {
         super(decoratedpage);
     }
 

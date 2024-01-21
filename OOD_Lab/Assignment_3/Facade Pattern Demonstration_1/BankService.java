@@ -36,4 +36,8 @@ public class BankService {
         IAccount fromAccount = this.bankAccounts.get(from);
         fromAccount.transfer(toAccount, amount);
     }
+
+    Account getAccount(String accoutNumber){
+        return accounts[accoutNumber];
+    }
 }

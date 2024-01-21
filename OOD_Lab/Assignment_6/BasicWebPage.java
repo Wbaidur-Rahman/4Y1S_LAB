@@ -6,6 +6,6 @@ public class BasicWebPage implements Webpage {
 
     @Override
     public void display() {
-
+        System.out.println("Basic web page!");
     }
 }

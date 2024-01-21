@@ -88,5 +88,5 @@ while running:
             running=False
        
 
-
+pygame.event.wait(10000)
 pygame.quit()

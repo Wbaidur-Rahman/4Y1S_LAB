@@ -121,14 +121,12 @@ int main(int argc, char* argv[]){
         vector<string> name_list = get_vect(names);
         string phn_numers = recv_a_string(0);
         vector<string> phn_list = get_vect(phn_numers);
-        string name = recv_a_string(0);
-        int x = name.length();
-        string p = "";
-        for(int i=0;i<x-1;i++)
-            p+=name[i];
+        // string name = recv_a_string(0);
+        string pattern = recv_a_string(0);
 
+        // cout << name << endl;
         for(int i=0;i<name_list.size();i++){
-            check(name_list[i], p, phn_list[i]);
+            check(name_list[i], "Smith", phn_list[i]);
         }
         send_a_number(1, 0);
     }

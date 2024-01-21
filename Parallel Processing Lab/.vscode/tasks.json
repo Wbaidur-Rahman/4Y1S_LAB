@@ -2,18 +2,32 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "java (build)",
-			"paths": [
-				"${workspace}"
+			"type": "cppbuild",
+			"label": "C/C++: gcc.exe build active file",
+			"command": "F:\\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-I",
+				"${MSMPI_INC}",
+				"-L",
+				"${MSMPI_LIB64}",
+				"-lmsmpi",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
 			],
-			"isFullBuild": true,
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
-			"problemMatcher": [],
-			"label": "java (build): Build Workspace",
-			"detail": "$(tools) Build all the Java projects in workspace."
+			"detail": "compiler: F:\\x86_64-8.1.0-release-posix-sjlj-rt_v6-rev0\\mingw64\\bin\\gcc.exe"
 		}
 	]
 }
